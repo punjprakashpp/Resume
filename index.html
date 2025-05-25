@@ -6,20 +6,13 @@
     <title>Ravi Rashmi Ravi - Fashion Designer Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Visualization & Content Choices: 
-        - Hero: HTML/CSS for prominent display of name, title, contact (Unicode icons, clickable links). Goal: Inform (Identity).
-        - Objective: HTML/CSS for clear text block. Goal: Inform (Career Goal).
-        - Key Skills: Chart.js horizontal bar chart for skill categories (Design, Craft, Digital, Leadership) with arbitrary proficiency values for visualization, plus a detailed list of all skills using HTML/CSS. Goal: Inform/Compare (Capabilities). Interaction: Visual grouping via chart.
-        - Education: HTML/CSS structured list. Goal: Inform (Qualifications).
-        - Awards: HTML/CSS styled list. Goal: Inform (Achievements).
-        - Experience: HTML/CSS text block. Goal: Inform (Background).
-        - Communication: HTML/CSS text block. Goal: Inform (Personal Statement).
-        - Personal Details: HTML/CSS small text block at the end. Goal: Inform (Supplementary Info).
-        - Navigation: HTML/CSS top bar with JS smooth scroll. Goal: Organize (Accessibility).
-        - All textual content directly from the merged_resume. No SVG/Mermaid used. Chart.js for the skills visualization.
-    -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0e7db 0%, #f7fafc 100%);
+            min-height: 100vh;
+        }
         html { scroll-behavior: smooth; }
         .chart-container {
             position: relative;
@@ -50,14 +43,54 @@
             background-color: #0d9488; /* teal-600 */
             margin-top: 8px;
         }
+        /* Custom for profile image gradient ring */
+        .profile-ring {
+            background: linear-gradient(135deg, #0d9488 0%, #fbbf24 100%);
+            padding: 5px;
+            border-radius: 9999px;
+            display: inline-block;
+        }
+        /* Card shadow and hover */
+        .card {
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 32px 0 rgba(13,148,136,0.15);
+            transform: translateY(-4px) scale(1.01);
+        }
+        /* Responsive nav */
+        .mobile-nav {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+            .mobile-nav {
+                display: block;
+            }
+        }
+        /* Footer mobile */
+        @media (max-width: 640px) {
+            footer .container {
+                padding: 0 1rem;
+            }
+            footer h4, footer p {
+                text-align: left;
+            }
+        }
     </style>
 </head>
 <body class="bg-amber-50 text-neutral-800">
 
     <header class="bg-white shadow-md sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-teal-700">Ravi Rashmi Ravi</a>
-            <div class="space-x-4">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center relative">
+            <a href="#" class="text-2xl font-bold text-teal-700 flex items-center gap-2">
+                <i class="fa-solid fa-user-tie text-teal-600"></i>
+                Ravi Rashmi Ravi
+            </a>
+            <!-- Desktop Nav -->
+            <div class="space-x-4 desktop-nav">
                 <a href="#objective" class="nav-link text-neutral-700">Objective</a>
                 <a href="#skills" class="nav-link text-neutral-700">Skills</a>
                 <a href="#education" class="nav-link text-neutral-700">Education</a>
@@ -65,24 +98,41 @@
                 <a href="#experience" class="nav-link text-neutral-700">Experience</a>
                 <a href="#contact" class="nav-link text-neutral-700">Contact</a>
             </div>
+            <!-- Mobile Nav Toggle -->
+            <button id="navToggle" class="mobile-nav text-2xl text-teal-700 focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <!-- Mobile Nav Menu -->
+            <div id="mobileMenu" class="mobile-nav absolute right-6 top-16 bg-white rounded-lg shadow-lg py-4 px-6 space-y-4 z-50 hidden">
+                <a href="#objective" class="block nav-link text-neutral-700">Objective</a>
+                <a href="#skills" class="block nav-link text-neutral-700">Skills</a>
+                <a href="#education" class="block nav-link text-neutral-700">Education</a>
+                <a href="#awards" class="block nav-link text-neutral-700">Awards</a>
+                <a href="#experience" class="block nav-link text-neutral-700">Experience</a>
+                <a href="#contact" class="block nav-link text-neutral-700">Contact</a>
+            </div>
         </nav>
     </header>
 
     <main class="container mx-auto px-6 py-12">
 
-        <section id="hero" class="text-center py-16 bg-white rounded-lg shadow-lg mb-12">
-            <div class="max-w-3xl mx-auto">
-                <h1 class="text-5xl font-bold text-teal-700 mb-4">RAVI RASHMI RAVI</h1>
-                <p class="text-2xl text-neutral-600 mb-8">FASHION DESIGNER</p>
-                <div class="flex justify-center space-x-6 text-neutral-600">
-                    <a href="tel:+919153616622" class="hover:text-teal-600 flex items-center">
-                        <span class="mr-2">📞</span> +91-9153616622
+        <section id="hero" class="text-center py-10 sm:py-16 bg-white rounded-2xl shadow-xl mb-10 sm:mb-12 card">
+            <div class="max-w-3xl mx-auto flex flex-col items-center">
+                <!-- Profile Image Placeholder with gradient ring -->
+                <div class="mb-6 profile-ring">
+                    <img src="https://via.placeholder.com/140x140.png?text=Profile+Image" alt="Profile image of Ravi Rashmi Ravi" class="rounded-full border-4 border-white shadow-lg w-36 h-36 object-cover mx-auto">
+                </div>
+                <h1 class="text-4xl sm:text-5xl font-bold text-teal-700 mb-2">RAVI RASHMI RAVI</h1>
+                <p class="text-xl sm:text-2xl text-neutral-600 mb-6">FASHION DESIGNER</p>
+                <div class="flex flex-wrap justify-center gap-4 sm:gap-6 text-neutral-600">
+                    <a href="tel:+919153616622" class="hover:text-teal-600 flex items-center gap-2 transition">
+                        <i class="fa-solid fa-phone"></i> <span class="text-base sm:text-lg">+91-9153616622</span>
                     </a>
-                    <a href="mailto:ravirashmiravi877@gmail.com" class="hover:text-teal-600 flex items-center">
-                        <span class="mr-2">📧</span> ravirashmiravi877@gmail.com
+                    <a href="mailto:ravirashmiravi877@gmail.com" class="hover:text-teal-600 flex items-center gap-2 transition">
+                        <i class="fa-solid fa-envelope"></i> <span class="text-base sm:text-lg">ravirashmiravi877@gmail.com</span>
                     </a>
-                    <span class="flex items-center">
-                        <span class="mr-2">📍</span> Khagaria, Baisa (Bihar)
+                    <span class="flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot"></i> <span class="text-base sm:text-lg">Khagaria, Baisa (Bihar)</span>
                     </span>
                 </div>
             </div>
@@ -204,32 +254,31 @@
             </p>
         </section>
         
-        <section id="contact" class="py-12 text-center bg-teal-700 text-white p-8 rounded-lg shadow-lg">
+        <section id="contact" class="py-10 sm:py-12 text-center bg-gradient-to-br from-teal-700 to-amber-400 text-white p-6 sm:p-8 rounded-2xl shadow-lg card">
              <h2 class="text-3xl font-semibold mb-6">Get In Touch</h2>
              <p class="text-lg leading-relaxed mb-8">
                 I am excited about new opportunities and collaborations. Feel free to reach out to discuss how my skills and passion for fashion design can benefit your team.
             </p>
             <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <a href="tel:+919153616622" class="hover:text-amber-200 flex items-center text-lg">
-                    <span class="mr-2">📞</span> +91-9153616622
+                <a href="tel:+919153616622" class="hover:text-amber-200 flex items-center text-lg gap-2 transition">
+                    <i class="fa-solid fa-phone"></i> +91-9153616622
                 </a>
-                <a href="mailto:ravirashmiravi877@gmail.com" class="hover:text-amber-200 flex items-center text-lg">
-                    <span class="mr-2">📧</span> ravirashmiravi877@gmail.com
+                <a href="mailto:ravirashmiravi877@gmail.com" class="hover:text-amber-200 flex items-center text-lg gap-2 transition">
+                    <i class="fa-solid fa-envelope"></i> ravirashmiravi877@gmail.com
                 </a>
-                <span class="flex items-center text-lg">
-                    <span class="mr-2">📍</span> Khagaria, Baisa (Bihar)
+                <span class="flex items-center text-lg gap-2">
+                    <i class="fa-solid fa-location-dot"></i> Khagaria, Baisa (Bihar)
                 </span>
             </div>
         </section>
-
     </main>
 
     <footer class="bg-neutral-800 text-amber-50 py-8 mt-12">
         <div class="container mx-auto px-6 text-center">
             <div class="mb-4">
                 <h4 class="text-lg font-semibold mb-2">Personal Details</h4>
-                <p class="text-sm">DOB: 01/01/2005 | Marital Status: Single | Nationality: Indian</p>
-                <p class="text-sm">Languages: English, Hindi, Bhojpuri</p>
+                <p class="text-sm">DOB: 19/12/2002 | Marital Status: Single | Nationality: Indian</p>
+                <p class="text-sm">Languages: English, Hindi, Maithili</p>
             </div>
             <p class="text-sm">&copy; <span id="currentYear"></span> Ravi Rashmi Ravi. All Rights Reserved.</p>
             <p class="text-xs mt-2">This interactive resume was generated based on provided content.</p>
@@ -237,6 +286,19 @@
     </footer>
 
     <script>
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        navToggle?.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        // Hide mobile menu on link click
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
         const skillsCtx = document.getElementById('skillsChart').getContext('2d');
